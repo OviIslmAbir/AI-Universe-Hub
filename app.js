@@ -46,7 +46,7 @@ const displayData = (universes, dataLimit) =>{
                     <h5 class="card-title">${universe.name}</h5>
                     <p class="card-text"><i class="fa-solid fa-calendar-days mx-1"></i><small>${universe.published_in}</small></p>
                </div>
-               <button class="btn btn-outline-dark w-25 p-2"><i class="fa-solid fa-arrow-right"></i></button>
+               <button class="btn btn-outline-dark w-25 p-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
         `
@@ -69,6 +69,17 @@ const toggleSpinner = isLoading => {
     else{
         loader.classList.add('d-none')
     }
+}
+// load details 
+const loadDetails = id =>{
+    const url = `https://openapi.programming-hero.com/api/ai/tools/${id}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayDetails(data.data.tools))
+}
+// displayDetails 
+const displayDetails = () => {
+    
 }
 
 
