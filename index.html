@@ -28,9 +28,19 @@
     <!-- main start -->
     <main class="container mt-5 mb-5">
         <section>
+            <!-- spinner -->
+            <div id="loader" style="height: 300px;" class=" d-flex align-items-center justify-content-center d-none">
+                <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            
+            <!-- card-container  -->
             <div id="card-container" class="row row-cols-1 row-cols-md-3 g-4">
 
             </div>
+
+            <!-- show-all-btn  -->
             <div id="show-all" class="text-center mt-3 d-none">
                 <button id="show-btn" class=" btn btn-danger p-2">See More</button>
             </div>

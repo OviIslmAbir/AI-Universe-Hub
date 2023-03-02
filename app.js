@@ -1,6 +1,6 @@
 // load data
 
-const loadData = dataLimit =>{
+const loadData = (dataLimit, spinner) =>{
     const url = `https://openapi.programming-hero.com/api/ai/tools`
     fetch(url)
       .then(res => res.json())
@@ -10,6 +10,9 @@ const loadData = dataLimit =>{
 // display data 
 
 const displayData = (universes, dataLimit) =>{
+    // // start loader
+    // toggleSpinner(true)
+
     const cardContainer = document.getElementById("card-container")
     cardContainer.innerHTML = '';
     // show all btn
@@ -49,12 +52,25 @@ const displayData = (universes, dataLimit) =>{
         `
         cardContainer.appendChild(cardDiv)
     }
+
+    // stop loader
+    toggleSpinner(false)
 }
 // showAll btn clicked 
 document.getElementById("show-btn").addEventListener("click", function(){
     loadData()
 })
+// toggle Spinner
+const toggleSpinner = isLoading => {
+    const loader = document.getElementById("loader")
+    if(isLoading){
+        loader.classList.remove('d-none')
+    }
+    else{
+        loader.classList.add('d-none')
+    }
+}
 
 
 
-loadData(6)
+loadData(6, toggleSpinner(true))
