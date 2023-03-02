@@ -1,11 +1,27 @@
-const loadData = () =>{
+// load data
+
+const loadData = dataLimit =>{
     const url = `https://openapi.programming-hero.com/api/ai/tools`
     fetch(url)
       .then(res => res.json())
-      .then(data => displayData(data.data.tools))
+      .then(data => displayData(data.data.tools, dataLimit))
 }
-const displayData = universes =>{
+
+// display data 
+
+const displayData = (universes, dataLimit) =>{
     const cardContainer = document.getElementById("card-container")
+    cardContainer.innerHTML = '';
+    // show all btn
+    const showAll = document.getElementById("show-all") 
+    if(dataLimit && universes.length > 6){
+        universes = universes.slice(0, 6)
+        showAll.classList.remove('d-none')
+    }
+    else{
+        showAll.classList.add('d-none')
+    }
+
     for(const universe of universes){
         const cardDiv = document.createElement("div")
         cardDiv.classList.add("col")
@@ -34,4 +50,11 @@ const displayData = universes =>{
         cardContainer.appendChild(cardDiv)
     }
 }
-loadData()
+// showAll btn clicked 
+document.getElementById("show-btn").addEventListener("click", function(){
+    loadData()
+})
+
+
+
+loadData(6)
