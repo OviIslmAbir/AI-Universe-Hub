@@ -81,7 +81,7 @@ const loadDetails = id =>{
 const displayDetails = universe => {
     const universeDetails = document.getElementById('universe-details')
     universeDetails.innerHTML=`
-    <div class ="d-flex justify-content-between gap-4">
+    <div class ="d-flex flex-column flex-lg-row justify-content-between  gap-4">
         <div class="border border-danger rounded p-3">
            <h5>${universe.description}<h4>
            <div class ="d-flex justify-content-between mt-3">
@@ -111,9 +111,9 @@ const displayDetails = universe => {
                <div>
                   <h5>Features</h5>
                     <ul>
-                        <li><small>${universe.features}</small></li>
-                        <li><small>${universe.features}</small></li>
-                        <li><small>${universe.features}</small></li>
+                        <li><small>${universe.features["1"].feature_name}</small></li>
+                        <li><small>${universe.features["2"].feature_name}</small></li>
+                        <li><small>${universe.features["3"].feature_name}</small></li>
                     </ul>
                </div>
                <div>
@@ -127,8 +127,12 @@ const displayDetails = universe => {
            </div>
         </div>
         <div>
+           <div class="position-relative">
+             <button  class=" btn btn-danger position-absolute end-0">${universe.accuracy.score*100 ? universe.accuracy.score*100 :"NO"}% accuracy</button>
+           <div>
            <img src="${universe.image_link[0]}" class="card-img-top rounded" alt="">
-           <h5>${universe.input_output_examples}</h5>
+           <h4 class="mt-3">${universe.input_output_examples[0].input}</h4>
+           <p class="mt-3">${universe.input_output_examples[1].output ? universe.input_output_examples[1].output : "No! Not Yet! Take a break!!!"}</p>
         </div>
     </div> 
     `
