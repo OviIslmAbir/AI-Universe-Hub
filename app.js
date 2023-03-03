@@ -36,8 +36,8 @@ const displayData = (universes, dataLimit) =>{
                 <p class="card-text">
                     <ol>
                         <li><small>${universe.features[0]}</small></li>
-                        <li><small>${universe.features[2]}</small></li>
-                        <li><small>${universe.features[3]}</small></li>
+                        <li><small>${universe.features[1]}</small></li>
+                        <li><small>${universe.features[2] ? universe.features[2]: "No More Features"}</small></li>
                     </ol>
                 </p>
             </div>
@@ -128,14 +128,18 @@ const displayDetails = universe => {
         </div>
         <div>
            <div class="position-relative">
-             <button  class=" btn btn-danger position-absolute end-0">${universe.accuracy.score*100 ? universe.accuracy.score*100 :"NO"}% accuracy</button>
-           <div>
+              <button id="accuracy-btn"  class=" btn btn-danger position-absolute end-0">${universe.accuracy.score*100}% accuracy</button>
+           <div> 
            <img src="${universe.image_link[0]}" class="card-img-top rounded" alt="">
            <h4 class="mt-3">${universe.input_output_examples[0].input}</h4>
            <p class="mt-3">${universe.input_output_examples[1].output ? universe.input_output_examples[1].output : "No! Not Yet! Take a break!!!"}</p>
         </div>
     </div> 
     `
+   const accuracyBtn = document.getElementById("accuracy-btn")
+   if(universe.accuracy.score === null){
+       accuracyBtn.classList.add("d-none")
+   }
 }
 
 
