@@ -20,10 +20,7 @@ const displayData = (universes, dataLimit) =>{
     else{
         showAll.classList.add('d-none')
     }
-        // sort by date 
-        document.getElementById("short-by-date-btn").addEventListener("click", function(){
 
-        })
 
     for(const universe of universes){
         const cardDiv = document.createElement("div")
@@ -142,7 +139,5 @@ const displayDetails = universe => {
        accuracyBtn.classList.add("d-none")
    }
 }
-
-
 
 loadData(6, toggleSpinner(true))
