@@ -1,5 +1,4 @@
 // load data
-
 const loadData = (dataLimit, spinner) =>{
     const url = `https://openapi.programming-hero.com/api/ai/tools`
     fetch(url)
@@ -10,9 +9,6 @@ const loadData = (dataLimit, spinner) =>{
 // display data 
 
 const displayData = (universes, dataLimit) =>{
-    // // start loader
-    // toggleSpinner(true)
-
     const cardContainer = document.getElementById("card-container")
     cardContainer.innerHTML = '';
     // show all btn
@@ -24,6 +20,10 @@ const displayData = (universes, dataLimit) =>{
     else{
         showAll.classList.add('d-none')
     }
+        // sort by date 
+        document.getElementById("short-by-date-btn").addEventListener("click", function(){
+
+        })
 
     for(const universe of universes){
         const cardDiv = document.createElement("div")
@@ -136,11 +136,13 @@ const displayDetails = universe => {
         </div>
     </div> 
     `
+   // accuracyBtn remove 
    const accuracyBtn = document.getElementById("accuracy-btn")
    if(universe.accuracy.score === null){
        accuracyBtn.classList.add("d-none")
    }
 }
+
 
 
 loadData(6, toggleSpinner(true))
